@@ -32,10 +32,7 @@ public class CityListTest {
         CityList cityList = new CityList();
         City city = mockCity();
         cityList.add(city);
-
-        assertThrows(IllegalArgumentException.class, () -> {
-            cityList.add(city);
-        });
+        assertThrows(IllegalArgumentException.class, () -> cityList.add(city));
     }
 
     @Test
@@ -49,4 +46,63 @@ public class CityListTest {
         assertEquals(0, city.compareTo(cityList.getCities().get(0)));
         assertEquals(0, mockCity().compareTo(cityList.getCities().get(1)));
     }
+
+
+    @Test
+    public void testSort() {
+        CityList cityList = new CityList();
+        City city = new City("KUET", "Khulna");
+        cityList.add(city);
+        City city1 = new City("Narsindi", "Dhaka");
+        cityList.add(city1);
+
+        assertEquals(0, city1.compareTo(cityList.getCities(1).get(0)));
+
+        assertEquals(0, city.compareTo(cityList.getCities().get(0)));
+
+    }
+
+    @Test
+    public void testCount(){
+        CityList cityList = new CityList();
+        City city = new City("Narsingdi", "Dhaka");
+        City city1 = new City("Gazipur", "Dhaka");
+
+        cityList.add(city);
+        cityList.add(city1);
+        assertEquals(2, cityList.count());
+
+        cityList.delete(city);
+        assertEquals(1, cityList.count());
+
+    }
+
+    @Test
+    public void testDelete() {
+        CityList cityList = new CityList();
+        City city = new City("Narsingdi", "Dhaka");
+        City city1 = new City("Gazipur", "Dhaka");
+
+        cityList.add(city);
+        cityList.add(city1);
+
+        cityList.delete(city);
+
+        assertFalse(cityList.getCities(0).contains(city));
+    }
+
+    @Test
+    public void testDeleteException() {
+        CityList cityList = new CityList();
+        City city = new City("Jessore", "Khulna");
+        City city1 = new City("Chandpur", "Noakhali");
+
+        cityList.add(city);
+        cityList.add(city1);
+
+        cityList.delete(city);
+        assertThrows(IllegalArgumentException.class, () -> cityList.delete(city));
+    }
+
+
 }
