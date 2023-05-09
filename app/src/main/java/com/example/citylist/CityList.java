@@ -47,6 +47,10 @@ public class CityList {
         return cityList;
     }
 
+    /**
+     * This delete method delete city from added cities.
+     * @param city
+     */
 
     public void delete(City city){
         if (!cities.contains(city)){
@@ -55,6 +59,10 @@ public class CityList {
         cities.remove(city);
     }
 
+    /**
+     * This method is for counting cities.
+     * @return city size
+     */
     public int count(){
         List<City> cityList = getCities();
         return cityList.size();

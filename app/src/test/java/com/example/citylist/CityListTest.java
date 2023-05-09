@@ -4,17 +4,31 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
+/**
+ * This class is for unit testing.
+ */
 public class CityListTest {
+    /**
+     * This is for getting added city list.
+     * @return cityList;
+     */
     private CityList mockCityList() {
         CityList cityList = new CityList();
         cityList.add(mockCity());
         return cityList;
     }
 
+    /**
+     * mockCity generate a mock city.
+     * @return a new instance of city class.
+     */
     private City mockCity() {
         return new City("Edmonton", "AB");
     }
 
+    /**
+     * This method is for unit test if city is added successfully or not.
+     */
     @Test
     public void testAdd() {
         CityList cityList = mockCityList();
@@ -27,6 +41,10 @@ public class CityListTest {
         assertTrue(cityList.getCities().contains(city));
     }
 
+    /**
+     * if there any exception when adding city is test by this method.
+     */
+
     @Test
     public void testAddException() {
         CityList cityList = new CityList();
@@ -35,6 +53,9 @@ public class CityListTest {
         assertThrows(IllegalArgumentException.class, () -> cityList.add(city));
     }
 
+    /**
+     * This test is for rendering test of all city.
+     */
     @Test
     public void testGetCities() {
         CityList cityList = mockCityList();
@@ -47,7 +68,9 @@ public class CityListTest {
         assertEquals(0, mockCity().compareTo(cityList.getCities().get(1)));
     }
 
-
+    /**
+     *  This test is for sorting of city.
+     */
     @Test
     public void testSort() {
         CityList cityList = new CityList();
@@ -62,6 +85,9 @@ public class CityListTest {
 
     }
 
+    /**
+     * This test is for count all city.
+     */
     @Test
     public void testCount(){
         CityList cityList = new CityList();
@@ -77,6 +103,9 @@ public class CityListTest {
 
     }
 
+    /**
+     * This test is for successful delete of added city.
+     */
     @Test
     public void testDelete() {
         CityList cityList = new CityList();
@@ -91,6 +120,9 @@ public class CityListTest {
         assertFalse(cityList.getCities(0).contains(city));
     }
 
+    /**
+     * if there any exception is throw when deleting is tested here.
+     */
     @Test
     public void testDeleteException() {
         CityList cityList = new CityList();
